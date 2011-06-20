@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project name="TextGameEngine" default="release" basedir=".">
+  
+    <property name="version" value="1.0.0.0" />
+
+    <path id="build.classpath">
+        <fileset dir="lib/" includes="*.jar" />
+    </path>
+
+    <path id="engine.classpath">
+        <fileset dir="build" includes="${ant.project.name}.jar" />
+    </path>
+
+<!--
+CLEAN
+-->
+    <target name="clean">         
+        <delete dir="build"/>
+    </target>   
+
+<!--
+INIT
+--> 
+    <target name="init">
+        <mkdir dir="build"/>
+    </target>        
+<!--
+BUILD
+-->        
+    <target name="build-java" depends="init">
+        <mkdir dir="build/classes"/>
+        <javac source="1.6" target="1.6" debug="on" srcdir="src/engine_jar" destdir="build/classes">
+            <classpath refid="build.classpath" />
+        </javac>
+    </target>  
+    
+    <target name="build-jar" depends="build-java">
+
+        <copy todir="build">
+            <fileset dir="lib" includes="*.jar" />
+        </copy>
+
+        <jar destfile="build/${ant.project.name}.jar" basedir="build/classes">
+            <manifest>
+                <attribute name="Implementation-Version" value="{version}" />
+                <attribute name="Class-Path" value="jline-0.9.94.jar" />
+            </manifest>
+        </jar>    
+    </target>
+
+    <target name="build-examples-java" depends="init">
+        <mkdir dir="build/examples/classes"/>
+        <javac source="1.6" target="1.6" debug="on" srcdir="src/examples_jar" destdir="build/examples/classes">
+            <classpath refid="build.classpath" />
+            <classpath refid="engine.classpath" />
+        </javac>
+    </target>
+
+    <target name="build-examples-jar" depends="build-examples-java">
+
+        <jar destfile="build/${ant.project.name}-Examples.jar" basedir="build/examples/classes">
+            <manifest>
+                <attribute name="Implementation-Version" value="{version}" />
+                <attribute name="Class-Path" value="TextGameEngine.jar" />
+            </manifest>
+        </jar>
+    </target>
+    
+    <target name="release" depends="clean,build-jar,build-examples-jar" />
+</project>

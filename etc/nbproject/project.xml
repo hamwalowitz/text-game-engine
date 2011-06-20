@@ -1,0 +1,94 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://www.netbeans.org/ns/project/1">
+    <type>org.netbeans.modules.ant.freeform</type>
+    <configuration>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/1">
+            <name>TextGameEngine</name>
+        </general-data>
+        <general-data xmlns="http://www.netbeans.org/ns/freeform-project/2">
+            <!-- Do not use Project Properties customizer when editing this file manually. -->
+            <name>TextGameEngine</name>
+            <properties>
+                <property name="project.dir">..</property>
+                <property name="ant.script">${project.dir}/build.xml</property>
+            </properties>
+            <folders>
+                <source-folder>
+                    <label>Text Game Engine</label>
+                    <location>${project.dir}</location>
+                </source-folder>
+                <source-folder>
+                    <label>TextGameEngine</label>
+                    <location>.</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src/engine_jar</label>
+                    <location>${project.dir}/src/engine_jar</location>
+                </source-folder>
+                <source-folder>
+                    <label>src/examples_jar</label>
+                    <location>${project.dir}/src/examples_jar</location>
+                </source-folder>
+                <source-folder>
+                    <label>src/engine_jar</label>
+                    <type>java</type>
+                    <location>${project.dir}/src/engine_jar</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+                <source-folder>
+                    <label>src/examples_jar</label>
+                    <type>java</type>
+                    <location>${project.dir}/src/examples_jar</location>
+                    <encoding>UTF-8</encoding>
+                </source-folder>
+            </folders>
+            <ide-actions>
+                <action name="release">
+                    <script>${ant.script}</script>
+                    <target>release</target>
+                </action>
+                <action name="clean">
+                    <script>${ant.script}</script>
+                    <target>clean</target>
+                </action>
+            </ide-actions>
+            <view>
+                <items>
+                    <source-folder style="packages">
+                        <label>src/engine_jar</label>
+                        <location>${project.dir}/src/engine_jar</location>
+                    </source-folder>
+                    <source-folder style="packages">
+                        <label>src/examples_jar</label>
+                        <location>${project.dir}/src/examples_jar</location>
+                    </source-folder>
+                    <source-file>
+                        <location>${ant.script}</location>
+                    </source-file>
+                </items>
+                <context-menu>
+                    <ide-action name="release"/>
+                    <ide-action name="clean"/>
+                </context-menu>
+            </view>
+            <subprojects/>
+        </general-data>
+        <java-data xmlns="http://www.netbeans.org/ns/freeform-project-java/2">
+            <compilation-unit>
+                <package-root>${project.dir}/src/engine_jar</package-root>
+                <classpath mode="compile">${project.dir}/lib/jline-0.9.94.jar</classpath>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+            <compilation-unit>
+                <package-root>${project.dir}/src/examples_jar</package-root>
+                <classpath mode="compile">${project.dir}/build/TextGameEngine.jar</classpath>
+                <source-level>1.5</source-level>
+            </compilation-unit>
+        </java-data>
+        <spellchecker-wordlist xmlns="http://www.netbeans.org/ns/spellchecker-wordlist/1">
+            <word>Initially</word>
+            <word>room's</word>
+        </spellchecker-wordlist>
+    </configuration>
+</project>
